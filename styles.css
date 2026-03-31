@@ -1,0 +1,363 @@
+/* Variáveis CSS para temas */
+:root {
+    --bg-color: #010101; /* Cor de fundo padrão (Dark Mode) */
+    --text-primary: #ffffff; /* Cor do texto principal padrão (Dark Mode) */
+    --text-secondary: #b3b3b3; /* Cor do texto secundário padrão (Dark Mode) */
+    --card-shadow: rgba(0, 0, 0, 0.3); /* Sombra do card padrão (Dark Mode) */
+    --hover-glow: rgba(238, 4, 4, 0.5); /* Sombra colorida (roxo/rosa) para o Dark Mode */
+}
+
+.light-mode {
+    --bg-color: #f0f0f0; /* Cor de fundo para Light Mode */
+    --text-primary: #141414; /* Cor do texto principal para Light Mode */
+    --text-secondary: #555555; /* Cor do texto secundário para Light Mode */
+    --card-shadow: rgba(0, 0, 0, 0.1); /* Sombra do card para Light Mode */
+    --hover-glow: rgba(238, 4, 4, 0.5); /* Sombra colorida (vermelha Netflix) para o Light Mode */
+}
+
+* {
+    margin: 0; /* Redefine a margem para zero para todos os elementos */
+    padding: 0; /* Redefine o preenchimento para zero para todos os elementos */
+    box-sizing: border-box; /* Inclui preenchimento e borda na largura e altura total do elemento */
+}
+
+body {
+    background-color: var(--bg-color); /* Usa a variável para a cor de fundo */
+    color: var(--text-primary); /* Usa a variável para a cor do texto */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Define a família de fontes para o texto */
+    font-size: 8px; /* Define o tamanho base da fonte */
+    line-height: 1.4; /* Define a altura da linha para melhor legibilidade */
+    display: flex; /* Usa flexbox para layout */
+    flex-direction: column; /* Organiza os filhos verticalmente */
+    align-items: center; /* Centraliza os itens horizontalmente no contêiner flex */
+    justify-content: center; /* Centraliza os itens verticalmente no contêiner flex */
+    min-height: 100vh; /* Garante que o corpo ocupe pelo menos a altura total da viewport */
+}
+
+header {
+    position: relative; /* Posiciona o cabeçalho relativo à sua posição normal */
+    display: flex; /* Usa flexbox para layout */
+    align-items: center; /* Centraliza os itens verticalmente no contêiner flex */
+    justify-content: center; /* Centraliza os itens horizontalmente no contêiner flex */
+    padding: 20px 60px 30px; /* Adiciona preenchimento: topo 20px, esquerda/direita 60px, fundo 30px */
+}
+
+/* Estilização do Toggle Switch */
+.theme-switch-wrapper {
+    position: fixed; /* Fixa o seletor de tema na tela durante a rolagem */
+    top: 25px; /* Define a distância de 25px do topo da janela */
+    right: 25px; /* Define a distância de 25px da lateral direita */
+    display: flex; /* Habilita o modelo flexbox para organizar itens internos */
+    align-items: center; /* Centraliza verticalmente o switch e labels */
+    z-index: 1000; /* Mantém o seletor acima dos outros elementos da página */
+}
+
+.theme-switch {
+    display: inline-block; /* Permite que o elemento se comporte como linha mas aceite dimensões */
+    height: 28px; /* Define a altura do interruptor */
+    position: relative; /* Cria um contexto de posicionamento para o círculo interno (.slider) */
+    width: 50px; /* Define a largura total do interruptor */
+}
+
+.theme-switch input {
+    display: none; /* Esconde o checkbox padrão para usar o visual customizado do slider */
+}
+
+.slider {
+    background-color: #555; /* Define a cor de fundo do interruptor quando desligado */
+    bottom: 0; /* Alinha o slider à base do contêiner pai */
+    cursor: pointer; /* Muda o cursor para indicar que o elemento é clicável */
+    left: 0; /* Alinha o slider à esquerda do contêiner pai */
+    position: absolute; /* Posiciona de forma absoluta dentro do .theme-switch */
+    right: 0; /* Alinha o slider à direita do contêiner pai */
+    top: 0; /* Alinha o slider ao topo do contêiner pai */
+    transition: .4s; /* Suaviza a mudança de cor e movimento por 0.4 segundos */
+}
+
+.slider:before {
+    background-color: #fff; /* Cor do círculo (chave) do interruptor */
+    bottom: 4px; /* Espaçamento interno da borda inferior */
+    content: ""; /* Necessário para renderizar o pseudo-elemento */
+    height: 20px; /* Altura do círculo interno */
+    left: 4px; /* Posição inicial do círculo à esquerda */
+    position: absolute; /* Posiciona o círculo dentro da trilha do slider */
+    transition: .4s; /* Suaviza o deslize do círculo */
+    width: 20px; /* Largura do círculo interno */
+}
+
+input:checked + .slider {
+    background-color: #571203; /* Cor ao ativar */
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px); /* Move o círculo para a direita quando ativado */
+}
+
+.slider.round {
+    border-radius: 34px; /* Deixa as bordas da trilha do switch arredondadas */
+}
+
+.slider.round:before {
+    border-radius: 50%; /* Transforma o quadrado interno em um círculo perfeito */
+}
+
+.logo {
+    position: fixed; /* Fixa o logo em uma posição específica da tela, ignorando a rolagem */
+    left: 4%; /* Posiciona a 4% da margem esquerda da janela */
+    top: 20px; /* Posiciona a 20 pixels do topo da janela */
+    z-index: 1001; /* Coloca o logo em uma camada superior a quase todos os outros elementos */
+}
+
+.logo img {
+    width: 120px; /* Define uma largura adequada para o logo na tela de seleção */
+    height: auto; /* Mantém a proporção da imagem */
+    display: block; /* Remove espaços em branco indesejados abaixo da imagem */
+}
+
+header h1 {
+    font-size: 2.2rem; /* Define o tamanho da fonte para 2.2rem */
+    font-weight: 700; /* Define o peso da fonte para 700 (negrito) */
+    letter-spacing: -0.05em; /* Reduz o espaçamento entre letras */
+    margin-bottom: 15px; /* Adiciona uma margem inferior de 15px */
+}
+
+main {
+    display: flex; /* Usa flexbox para layout */
+    flex-direction: column; /* Organiza a seção de perfis e o botão verticalmente */
+    align-items: center; /* Centraliza os itens verticalmente no contêiner flex */
+    justify-content: center; /* Centraliza os itens horizontalmente no contêiner flex */
+    padding: 40px 60px; /* Adiciona preenchimento: topo/fundo 40px, esquerda/direita 60px */
+}
+
+.profiles {
+    width: 100%; /* Define a largura para 100% do pai */
+    display: flex; /* Usa flexbox para layout */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+}
+
+.container,
+.container > ol {
+    display: flex; /* Usa flexbox para layout */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: center; /* Centraliza os itens verticalmente */
+    gap: 40px; /* Adiciona um espaço de 40px entre os itens */
+    flex-wrap: nowrap; /* Mantém os perfis em uma única linha horizontal */
+}
+
+.container {
+    list-style: none; /* Remove as marcas de lista */
+    padding: 0; /* Remove preenchimento interno padrão da lista */
+    margin: 0; /* Remove margens externas padrão da lista */
+}
+
+.container > ol {
+    list-style: none; /* Remove as marcas de lista do ol */
+    padding: 0; /* Remove preenchimento interno do ol aninhado */
+    margin: 0; /* Remove margens externas do ol aninhado */
+}
+
+.profile {
+    display: flex; /* Usa flexbox para layout */
+    flex-direction: column; /* Organiza os filhos verticalmente */
+    align-items: center; /* Centraliza os itens horizontalmente */
+    cursor: pointer; /* Muda o cursor para ponteiro ao passar o mouse */
+    transition: all 0.3s ease; /* Adiciona uma transição suave para todas as propriedades */
+    text-decoration: none; /* Remove o sublinhado dos links */
+}
+
+.profile img {
+    width: 45px; /* Reduzido de 50px para 45px */
+    height: 45px; /* Reduzido de 50px para 45px */
+    border-radius: 8px; /* Arredonda os cantos com raio de 8px */
+    object-fit: cover; /* Garante que a foto do perfil preencha o quadrado sem distorção */
+    margin-bottom: 20px;
+    box-shadow: 0 8px 16px var(--card-shadow); /* Usa a variável para a sombra do card */
+    transition: all 0.3s ease; /* Adiciona uma transição suave */
+}
+
+.profile:hover img {
+    transform: scale(1.05); /* Escala a imagem para cima em 5% ao passar o mouse */
+    box-shadow: 0 12px 24px var(--hover-glow); /* Volta a sombra colorida usando a nova variável */
+}
+
+.profile p {
+    font-size: 0.875rem; /* Define o tamanho da fonte para 1.5rem */
+    font-weight: 500; /* Define o peso da fonte para 500 */
+    color: var(--text-secondary); /* Usa a variável para a cor do texto secundário */
+    transition: color 0.3s ease; /* Adiciona uma transição para mudanças de cor */
+}
+
+.profile:hover p {
+    color: var(--text-primary); /* Usa a variável para a cor do texto principal */
+}
+
+/* Estilização do botão Gerenciar Perfis */
+.manage-profiles-button {
+    margin-top: 40px; /* Espaçamento acima do botão */
+    text-align: center; /* Garante que o botão esteja centralizado se o pai permitir */
+}
+
+.manage-profiles-button button {
+    background-color: transparent; /* Fundo transparente */
+    color: var(--text-secondary); /* Cor do texto que se adapta ao tema */
+    border: 1px solid var(--text-secondary); /* Borda que se adapta ao tema */
+    padding: 10px 25px; /* Preenchimento interno */
+    font-size: 0.9rem; /* Tamanho da fonte */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    transition: all 0.3s ease; /* Transição suave para efeitos de hover */
+    border-radius: 2px; /* Levemente arredondado */
+    text-transform: uppercase; /* Texto em maiúsculas */
+}
+
+.manage-profiles-button button:hover {
+    color: var(--text-primary); /* Cor do texto ao passar o mouse */
+    border-color: var(--text-primary); /* Cor da borda ao passar o mouse */
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo sutil ao passar o mouse */
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    header {
+        padding: 40px 40px 60px; /* Adiciona preenchimento ajustado para telas menores */
+    }
+
+    header h1 {
+        font-size: 2.5rem; /* Define o tamanho da fonte para 2.5rem em telas médias */
+    }
+
+    main {
+        padding: 30px 40px 40px; /* Adiciona preenchimento reduzido para telas médias */
+    }
+
+    .container,
+    .container > ol {
+        gap: 30px; /* Reduz o espaço entre itens para telas médias */
+        flex-wrap: wrap; /* Permite quebra de linha se necessário */
+    }
+
+    .profile img {
+        width: 130px; /* Reduzido de 150px para 130px para telas médias */
+        height: 130px; /* Reduzido de 150px para 130px para telas médias */
+    }
+
+    .profile p {
+        font-size: 1.25rem; /* Define o tamanho da fonte para 1.25rem em telas médias */
+    }
+
+    .manage-profiles-button button {
+        font-size: 1.1rem; /* Ajusta o tamanho da fonte do botão para telas médias */
+        padding: 8px 20px; /* Ajusta o preenchimento do botão em telas médias */
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 30px 20px 40px; /* Adiciona preenchimento reduzido para telas pequenas */
+    }
+
+    header h1 {
+        font-size: 2rem; /* Define o tamanho da fonte para 2rem em telas pequenas */
+    }
+
+    main {
+        padding: 20px; /* Adiciona preenchimento mínimo para telas pequenas */
+    }
+
+    .container,
+    .container > ol {
+        gap: 20px; /* Reduz ainda mais o espaço entre itens para telas pequenas */
+        flex-wrap: wrap; /* Permite quebra de linha se necessário */
+    }
+
+    .profile img {
+        width: 100px; /* Reduzido de 120px para 100px para telas pequenas */
+        height: 100px; /* Reduzido de 120px para 100px para telas pequenas */
+    }
+
+    .profile p {
+        font-size: 1.1rem; /* Define o tamanho da fonte para 1.1rem em telas pequenas */
+    }
+
+    .manage-profiles-button button {
+        font-size: 1rem; /* Ajusta o tamanho da fonte do botão para telas pequenas */
+        padding: 7px 18px; /* Ajusta o preenchimento do botão em telas pequenas */
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 20px 15px 30px; /* Adiciona preenchimento mínimo para telas muito pequenas */
+    }
+
+    header h1 {
+        font-size: 1.5rem; /* Define o tamanho da fonte para 1.5rem em telas muito pequenas */
+    }
+
+    main {
+        padding: 15px; /* Adiciona preenchimento mínimo para telas muito pequenas */
+    }
+
+    .container,
+    .container > ol {
+        gap: 15px; /* Reduz o espaço entre itens para telas muito pequenas */
+        flex-wrap: wrap; /* Permite quebra de linha se necessário */
+    }
+
+    .profile img {
+        width: 85px; /* Reduzido de 100px para 85px para telas muito pequenas */
+        height: 85px; /* Reduzido de 100px para 85px para telas muito pequenas */
+    }
+
+    .profile p {
+        font-size: 1rem; /* Define o tamanho da fonte para 1rem em telas muito pequenas */
+    }
+
+    .manage-profiles-button button {
+        font-size: 0.9rem; /* Ajusta o tamanho da fonte do botão para telas muito pequenas */
+        padding: 6px 15px; /* Ajusta o preenchimento do botão em telas muito pequenas */
+    }
+}
+
+@media (min-width: 901px) {
+    .container {
+        flex-wrap: nowrap; /* Impede a quebra de linha dos perfis em telas grandes */
+    }
+}
+
+@media (min-width: 1200px) {
+    body {
+        padding: 0 20px; /* Espaço lateral em telas grandes */
+    }
+
+    main {
+        max-width: 1200px; /* Limita a largura para evitar linhas muito longas */
+        width: 100%;
+        padding: 50px 80px; /* Aumenta o padding em telas grandes */
+    }
+
+    .container {
+        gap: 50px; /* Aumenta o espaçamento entre perfis em telas larges */
+    }
+
+    .profile img {
+        width: 180px; /* Reduzido de 220px para 180px para telas grandes */
+        height: 180px; /* Mantém o aspecto quadrado reduzido */
+    }
+
+    .profile p {
+        font-size: 1.4rem; /* Texto um pouco maior para melhor leitura */
+    }
+}
+
+@media (orientation: landscape) and (max-width: 768px) {
+    main {
+        flex-direction: column; /* Em landscape no mobile, empilha se necessário */
+        padding: 20px 10px;
+    }
+
+    .container {
+        gap: 25px; /* Um pouco mais de espaço para o modo paisagem */
+    }
+}
+
+    
