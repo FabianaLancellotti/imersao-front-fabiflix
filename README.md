@@ -1,5 +1,5 @@
 🎬 Fabiflix - Interface Estilo Netflix
-Este projeto é uma aplicação web interativa que replica a experiência de usuário da Netflix, desenvolvida durante a Imersão DEV com Google Gemini. O foco principal foi a criação de uma interface moderna, responsiva e funcional, utilizando técnicas avançadas de front-end.
+Este projeto é uma aplicação web interativa que replica a experiência de usuário da Netflix, desenvolvida durante a Imersão Front_End e IA. O foco principal foi a criação de uma interface moderna, responsiva e funcional, utilizando técnicas avançadas de front-end.
 
 🚀 Tecnologias Utilizadas
 * HTML5: Estruturação semântica da página de seleção de perfis e catálogo.
@@ -20,9 +20,8 @@ Mais do que a aplicação de ferramentas técnicas, este projeto representa um m
 * Resolução de Problemas: Troubleshooting de comportamentos de CSS e carregamento dinâmico de elementos.
 
 📂 Como visualizar
-git clone https://github.com/seu-usuario/fabiflix.git
-
-Abra o arquivo index.html no seu navegador preferido.
+* git clone https://github.com/seu-usuario/fabiflix.git
+* Abra o arquivo index.html no seu navegador preferido.
 
 Autora: Fabiana Gomes Lancellotti
 Em transição para Data Analytics & BI | Apaixonada por transformar dados e código em conhecimento.# imersao-front-fabiflix
