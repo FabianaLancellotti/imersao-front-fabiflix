@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Eater&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/Logo.png" alt="Logo Netflix">
+        </div>
+        <h1>Quem está assistindo?</h1>
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="theme-toggle">
+                <input type="checkbox" id="theme-toggle" />
+                <div class="slider round"></div>
+            </label>
+        </div>
+    </header>
+    <main>
+        <section class="profiles">
+            <ul class="container">
+                <ol>
+                    <li>
+                        <a href="catalogo/catalogo.html" class="profile" data-name="Ally" data-img="../assets/pipoca.png">
+                            <img src="assets/pipoca.png" alt="Pote de pipoca transbordando com pipocas estourando para fora.">
+                            <p>Ally</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="catalogo/catalogo.html" class="profile" data-name="Jenna" data-img="../assets/soda.png">
+                            <img src="assets/soda.png" alt="Copo de refrigerante.">
+                            <p>Jenna</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="catalogo/catalogo.html" class="profile" data-name="Elle" data-img="../assets/chocolate.png">
+                            <img src="assets/chocolate.png" alt="Barra de chocolate.">
+                            <p>Elle</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="catalogo/catalogo.html" class="profile" data-name="Kevin" data-img="../assets/batata_chips.png">
+                            <img src="assets/batata_chips.png" alt="Pote de batata chips.">
+                            <p>Kevin</p>
+                        </a>
+                    </li>
+                </ol>
+            </ul>
+        </section>
+        <div class="manage-profiles-button">
+            <button>GERENCIAR PERFIS</button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
