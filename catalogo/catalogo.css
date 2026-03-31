@@ -1,0 +1,504 @@
+:root {
+    --netflix-red: #E50914; /* Cor vermelha característica da marca */
+    --dark-bg: #010101; /* Fundo escuro padrão da interface */
+    --text-color: #ffffff; /* Cor branca para o texto principal */
+}
+
+* {
+    margin: 0; /* Remove margens externas padrão */
+    padding: 0; /* Remove preenchimentos internos padrão */
+    box-sizing: border-box; /* Garante que bordas e preenchimentos não aumentem o tamanho total do elemento */
+}
+
+body {
+    font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Define a hierarquia de fontes */
+    background-color: var(--dark-bg); /* Aplica a cor de fundo definida na variável */
+    color: var(--text-color); /* Aplica a cor de texto definida na variável */
+    overflow-x: hidden; /* Evita a barra de rolagem horizontal na página toda */
+}
+
+a {
+    text-decoration: none; /* Remove o sublinhado padrão de links */
+    color: #e5e5e5; /* Define uma cor cinza clara para links */
+    transition: color 0.3s; /* Transição suave na mudança de cor */
+}
+
+a:hover {
+    color: #b3b3b3; /* Escurece levemente o link ao passar o mouse */
+}
+
+/* Navbar */
+.navbar {
+    position: fixed; /* Mantém a barra fixa no topo durante a rolagem */
+    top: 0; /* Alinha no topo da janela */
+    width: 100%; /* Ocupa toda a largura disponível */
+    display: flex; /* Habilita layout flexível */
+    justify-content: space-between; /* Espaça os blocos da esquerda e direita nas extremidades */
+    align-items: center; /* Centraliza os itens verticalmente */
+    padding: 0 4%; /* Adiciona respiro lateral de 4% */
+    height: 70px; /* Define a altura fixa da barra */
+    z-index: 1000; /* Garante que a barra fique sobreposta a todos os outros elementos */
+    background-color: var(--dark-bg); /* Fundo sólido para cobrir o conteúdo ao rolar */
+}
+
+.navbar-left,
+.navbar-right {
+    display: flex; /* Alinha itens internos em linha */
+    align-items: center; /* Centraliza itens internamente */
+    gap: 20px; /* Espaçamento de 20px entre os itens do grupo */
+}
+
+.logo {
+    display: inline-block; /* Permite aplicar dimensões e transformações sem quebrar a linha */
+    position: relative; /* Define o contexto para o posicionamento absoluto do arco (::after) */
+    margin-right: 5px; /* Reduzido para aproximar a imagem dos links */
+}
+
+.logo img {
+    height: 40px; /* Altura ideal para a barra de navegação de 70px */
+    width: auto; /* Mantém a proporção da largura */
+    vertical-align: middle; /* Alinha verticalmente com os links */
+    display: block;
+}
+
+.nav-links {
+    list-style: none; /* Remove os pontos da lista */
+    display: flex; /* Exibe os links em linha */
+    gap: 20px; /* Espaço entre cada link de navegação */
+    font-size: 15px; /* Tamanho de fonte discreto para a navegação */
+}
+
+.nav-links .active {
+    font-weight: bold; /* Destaca o link da página atual */
+    color: white; /* Cor branca pura para destaque */
+}
+
+.icon {
+    font-size: 20px; /* Tamanho dos ícones da biblioteca FontAwesome */
+    cursor: pointer; /* Indica interatividade */
+}
+
+.kids-link {
+    font-size: 14px; /* Tamanho de fonte para o link de perfil/infantil */
+}
+
+.nav-notification {
+    position: relative; /* Base para o posicionamento absoluto da badge */
+    cursor: pointer; /* Indica interatividade */
+}
+
+.notification-badge {
+    position: absolute; /* Posiciona sobre o ícone de sino */
+    top: -5px; /* Ajusta verticalmente para fora do ícone */
+    right: -8px; /* Ajusta horizontalmente para fora do ícone */
+    background-color: var(--netflix-red); /* Cor de fundo vermelha de alerta */
+    color: white; /* Texto branco */
+    font-size: 10px; /* Fonte pequena para caber no círculo */
+    font-weight: bold; /* Texto em negrito */
+    border-radius: 50%; /* Transforma o quadrado em círculo */
+    width: 16px; /* Largura fixa do círculo */
+    height: 16px; /* Altura fixa do círculo */
+    display: flex; /* Flexbox para centralizar o número */
+    justify-content: center; /* Centraliza o número horizontalmente */
+    align-items: center; /* Centraliza o número verticalmente */
+}
+
+.profile-menu {
+    display: flex; /* Alinha o avatar e a seta em linha */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 5px; /* Espaço entre avatar e seta */
+    cursor: pointer; /* Indica interatividade */
+}
+
+.profile-icon {
+    width: 32px; /* Largura padrão do avatar */
+    border-radius: 4px; /* Cantos levemente arredondados */
+}
+
+/* Sliders */
+.sliders-container {
+    padding: 0 4%; /* Alinha o conteúdo com a navbar */
+    padding-top: 100px; /* Espaço para não ficar escondido sob a navbar fixa */
+    position: relative; /* Define contexto de empilhamento */
+    z-index: 3; /* Fica acima de fundos decorativos se houver */
+    padding-bottom: 100px; /* Espaço extra no final da página */
+}
+
+.slider-section {
+    margin-bottom: 3.5vw; /* Espaçamento entre as categorias (escalonável com a tela) */
+}
+
+.slider-header {
+    display: flex; /* Alinha título e indicadores em linha */
+    justify-content: space-between; /* Título à esquerda, indicadores à direita */
+    align-items: flex-end; /* Alinha os elementos pela base do texto */
+    margin-bottom: 12px; /* Espaço antes da linha de filmes */
+}
+
+.slider-title {
+    font-size: 1.25vw; /* Tamanho responsivo baseado na largura da tela */
+    font-weight: bold; /* Negrito para destaque da categoria */
+    color: #e5e5e5; /* Cor cinza clara suave */
+    line-height: 1.25vw; /* Mantém a altura da linha proporcional ao tamanho */
+}
+
+.slider-indicators {
+    display: flex; /* Alinha os tracinhos indicadores */
+    gap: 2px; /* Espaço mínimo entre indicadores */
+    margin-bottom: 4px; /* Ajuste fino de posicionamento vertical */
+}
+
+.slider-indicators div {
+    width: 12px; /* Largura do tracinho */
+    height: 2px; /* Espessura do tracinho */
+    background-color: #4d4d4d; /* Cor inativa (cinza escuro) */
+}
+
+.slider-indicators div.active {
+    background-color: #aaa; /* Cor ativa para indicar a página atual do carrossel */
+}
+
+.movie-row {
+    display: flex; /* Organiza os cards em linha horizontal */
+    gap: 10px; /* Espaço lateral entre os cards */
+    overflow-x: visible; /* Permite que o zoom do card vaze para fora da linha sem cortar */
+    padding: 10px 4% 120px 4%; /* Aumentado para acomodar o poster estendido e detalhes no hover */
+    margin: 0 -4%; /* Compensa o padding do container pai para os cards tocarem as bordas da tela */
+    scroll-behavior: smooth; /* Torna a rolagem via script suave */
+    -ms-overflow-style: none; /* Esconde barra de rolagem no Internet Explorer/Edge */
+    scrollbar-width: none; /* Esconde barra de rolagem no Firefox */
+}
+
+.movie-row::-webkit-scrollbar {
+    display: none; /* Esconde a barra de rolagem no Chrome, Safari e Opera */
+}
+
+.movie-card {
+    min-width: 200px; /* Largura reduzida para formato poster */
+    width: 200px; /* Largura fixa do poster */
+    height: 300px; /* Altura aumentada para formato vertical (2:3) */
+    background-color: #222; /* Fundo escuro enquanto a imagem carrega */
+    border-radius: 4px; /* Cantos arredondados padrão */
+    cursor: pointer; /* Indica que o filme pode ser selecionado */
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s, border-radius 0.3s 0s, z-index 0s 0.3s, box-shadow 0.3s 0s;
+    position: relative; /* Contexto para imagem, iframe e badges internos */
+    z-index: 1; /* Ordem de empilhamento inicial */
+    transform-origin: center center; /* Ponto de origem da animação de escala */
+}
+
+/* Modifiers applied by JavaScript to prevent edge clipping */
+.movie-card.origin-left {
+    transform-origin: left center; /* Faz o zoom crescer da esquerda para a direita (para o primeiro item da linha) */
+}
+
+.movie-card.origin-right {
+    transform-origin: right center; /* Faz o zoom crescer da direita para a esquerda (para o último item da linha) */
+}
+
+.movie-card:hover {
+    transform: scale(1.5) translateY(-5%); /* Aumenta o card em 60% e sobe ele levemente */
+    z-index: 99; /* Garante que o card em zoom fique por cima de todos os outros */
+    border-radius: 6px; /* Aumenta o arredondamento durante o zoom */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9); /* Adiciona sombra profunda para efeito de profundidade */
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s, border-radius 0.3s 0.6s, box-shadow 0.3s 0.6s, z-index 0s 0s;
+    /* O delay de 0.6s evita disparar o zoom ao apenas passar o mouse rápido pela linha */
+}
+
+.movie-card img {
+    position: absolute; /* Preenche o card */
+    top: 0; /* Alinha a imagem ao topo do card */
+    left: 0; /* Alinha a imagem à esquerda do card */
+    width: 100%; /* Ocupa toda largura */
+    height: 100%; /* Ocupa toda altura */
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+    border-radius: 4px; /* Acompanha o arredondamento do card */
+    transition: opacity 0.3s ease, border-radius 0.3s; /* Suaviza a troca para o vídeo */
+    z-index: 2; /* Fica acima do iframe inicialmente */
+}
+
+.movie-card iframe {
+    position: absolute; /* Preenche o card por trás da imagem */
+    top: 0; /* Alinha o vídeo ao topo do card */
+    left: 0; /* Alinha o vídeo à esquerda do card */
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Invisível inicialmente */
+    border-radius: 4px;
+    transition: opacity 0.3s ease, border-radius 0.3s;
+    pointer-events: none; /* Evita que o iframe capture cliques antes do zoom */
+    z-index: 1; /* Fica atrás da imagem */
+}
+
+.movie-card iframe.playing {
+    opacity: 1; /* Torna o trailer visível */
+    z-index: 3; /* Passa à frente da imagem estática */
+    border-radius: 6px 6px 0 0; /* Remove arredondamento inferior para conectar com o painel de detalhes */
+}
+
+.movie-card:hover img {
+    border-radius: 6px 6px 0 0; /* Ajusta bordas da imagem no hover para conectar com detalhes */
+    transition: border-radius 0s 0.6s; /* Aplica instantaneamente após o delay de hover */
+}
+
+.movie-card img.playing-video {
+    opacity: 0; /* Esconde a imagem enquanto o vídeo toca */
+}
+
+/* Card Details Modal */
+.card-details {
+    position: absolute; /* Fixado abaixo da imagem do card */
+    top: 100%; /* Inicia exatamente onde termina a altura do card */
+    left: 0; /* Alinha os detalhes à borda esquerda do card */
+    width: 100%; /* Mesma largura do card com zoom */
+    background-color: #181818; /* Cinza muito escuro para contraste */
+    border-bottom-left-radius: 6px; /* Arredondamento inferior esquerdo */
+    border-bottom-right-radius: 6px; /* Arredondamento inferior direito */
+    padding: 18px 16px; /* Espaçamento interno generoso */
+    opacity: 0; /* Invisível por padrão */
+    visibility: hidden; /* Oculto para interações por padrão */
+    transition: opacity 0.3s 0s, visibility 0.3s 0s; /* Transição rápida para sumir */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.9); /* Sombra para destacar o modal */
+    display: flex; /* Organiza info, botões e tags em coluna */
+    flex-direction: column;
+    gap: 12px; /* Espaço entre as seções internas */
+    z-index: 2; /* Acima do conteúdo da linha inferior */
+    cursor: default; /* Cursor padrão (não mãozinha) dentro dos detalhes */
+}
+
+.movie-card:hover .card-details {
+    opacity: 1; /* Aparece no hover */
+    visibility: visible; /* Torna-se interativo no hover */
+    transition: opacity 0.2s 0.6s, visibility 0s 0.6s; /* Delay para aparecer junto com o zoom do card */
+}
+
+.details-buttons {
+    display: flex; /* Linha de botões interativos */
+    justify-content: space-between; /* Play/Add à esquerda, Detalhes à direita */
+    align-items: center; /* Centraliza os botões verticalmente no eixo transversal */
+}
+
+.left-buttons,
+.right-buttons {
+    display: flex; /* Agrupa botões próximos */
+    gap: 8px; /* Espaço entre botões vizinhos */
+}
+
+.btn-icon {
+    width: 32px; /* Largura circular */
+    height: 32px; /* Altura circular */
+    border-radius: 50%; /* Torna o botão redondo */
+    background-color: #2b2b2b; /* Fundo cinza escuro */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Borda semi-transparente */
+    color: white; /* Cor do ícone */
+    display: flex; /* Centraliza o ícone */
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px; /* Tamanho do ícone */
+    transition: border-color 0.2s, background-color 0.2s; /* Feedback visual rápido */
+}
+
+.btn-icon:hover {
+    border-color: white; /* Borda branca sólida no hover */
+    background-color: rgba(255, 255, 255, 0.2); /* Fundo sutilmente mais claro no hover */
+}
+
+.btn-play-icon {
+    background-color: white; /* Fundo branco sólido para o botão de Play principal */
+    color: black; /* Ícone preto para alto contraste */
+    border: none; /* Remove bordas para visual limpo */
+}
+
+.btn-play-icon:hover {
+    background-color: #e6e6e6; /* Cinza bem claro no hover */
+}
+
+.btn-play-icon i {
+    margin-left: 2px; /* Ajuste óptico para centralizar o triângulo do ícone de Play */
+}
+
+.details-info {
+    display: flex; /* Linha de metadados (relevância, idade, duração) */
+    align-items: center;
+    gap: 10px;
+    font-size: 11px; /* Fonte pequena informativa */
+    font-weight: bold;
+}
+
+.match-score {
+    color: #46d369; /* Verde Netflix para indicar relevância */
+}
+
+.age-badge {
+    background-color: transparent; /* Fundo padrão */
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Moldura discreta */
+    color: white;
+    padding: 1px 3px; /* Espaço interno para não encostar na borda */
+    border-radius: 2px;
+    font-family: Arial, sans-serif; /* Fonte padrão para badges de idade */
+}
+
+.age-badge.red-accent {
+    background-color: #d32f2f; /* Vermelho sólido para classificações altas (18+) */
+    border: none; /* Remove borda para visual de preenchimento sólido */
+    font-weight: bold;
+}
+
+.resolution {
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Moldura para o selo HD/4K */
+    padding: 1px 3px;
+    border-radius: 2px;
+    color: rgba(255, 255, 255, 0.9); /* Branco suavizado */
+}
+
+.duration {
+    color: rgba(255, 255, 255, 0.9); /* Cor discreta para a duração */
+}
+
+.details-tags {
+    display: flex; /* Organiza as tags de gênero/estilo */
+    gap: 6px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 4px; /* Espaçamento superior para separar das infos */
+}
+
+.details-tags span:not(:last-child)::after {
+    content: "•"; /* Adiciona um ponto separador entre as tags */
+    color: #666; /* Cor cinza para o ponto separador */
+    margin-left: 6px; /* Espaço à esquerda do ponto */
+}
+
+/* Badges */
+.badge-top10 {
+    position: absolute; /* Fixado no canto do card */
+    top: 0;
+    right: 0;
+    width: 22px; /* Largura estreita estilo fita */
+    height: 28px; /* Altura que vaza um pouco verticalmente */
+    background-color: var(--netflix-red); /* Cor vermelha de destaque */
+    color: white;
+    display: flex; /* Empilha o texto TOP e o NÚMERO */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    z-index: 4; /* À frente da imagem do card */
+    border-bottom-left-radius: 2px; /* Leve arredondamento na ponta interna */
+    box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para parecer uma etiqueta física */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.badge-top10 span.top {
+    font-size: 7px; /* Texto "TOP" bem pequeno */
+    letter-spacing: 0.5px; /* Espaçamento entre letras para legibilidade */
+    line-height: 8px;
+}
+
+.badge-top10 span.number {
+    font-size: 13px; /* Número em destaque */
+    line-height: 13px;
+}
+
+.badge-bottom {
+    position: absolute; /* Fixado na parte inferior do card */
+    bottom: 8px;
+    left: 50%; /* Inicia no meio */
+    transform: translateX(-50%); /* Ajusta para centralizar perfeitamente */
+    padding: 2px 4px; /* Espaço em volta do texto da badge */
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 2px;
+    z-index: 4;
+    white-space: nowrap; /* Impede quebra de linha se o texto for longo */
+    text-transform: uppercase; /* Força letras maiúsculas para visual padrão Netflix */
+}
+
+.movie-card.has-progress .badge-bottom {
+    bottom: 12px; /* Sobe a badge um pouco para não cobrir a barra de progresso */
+}
+
+.badge-bottom.red {
+    background-color: var(--netflix-red); /* Fundo vermelho */
+    color: white; /* Texto branco */
+}
+
+.badge-bottom.white {
+    background-color: white; /* Fundo branco */
+    color: black; /* Texto preto */
+}
+
+/* Progress bar */
+.progress-bar-container {
+    position: absolute; /* Fixado na base do card */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px; /* Espessura da barra */
+    background-color: rgba(100, 100, 100, 0.7); /* Cor de fundo da barra (parte não assistida) */
+    z-index: 5; /* Fica sobre a imagem e badges */
+    border-bottom-left-radius: 4px; /* Alinha com o arredondamento inferior do card */
+    border-bottom-right-radius: 4px;
+}
+
+.progress-value {
+    height: 100%; /* Preenche toda a altura do container */
+    background-color: var(--netflix-red); /* Cor vermelha para indicar o quanto já foi assistido */
+    border-bottom-left-radius: 4px; /* Mantém o arredondamento no início da barra */
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Esconde links de texto em celulares para economizar espaço */
+    }
+
+    .movie-card {
+        min-width: 140px; /* Posters menores em celulares */
+        width: 140px;
+        height: 210px; /* Mantendo proporção vertical no mobile */
+    }
+
+    .slider-title {
+        font-size: 4vw; /* Títulos maiores proporcionalmente no mobile */
+        line-height: 4.5vw;
+    }
+}
+
+/* Footer */
+footer {
+    padding: 0 4%; /* Alinha com o restante do site */
+    color: #737373; /* Cinza escuro discreto para o rodapé */
+    font-size: 13px;
+    margin-bottom: 20px; /* Margem final da página */
+}
+
+.footer-content {
+    max-width: 980px; /* Limita a largura do rodapé para leitura confortável */
+    margin: 0 auto; /* Centraliza o bloco do rodapé */
+}
+
+.footer-content p {
+    margin-bottom: 30px; /* Espaçamento após o parágrafo inicial */
+}
+
+.footer-links {
+    list-style: none; /* Remove pontos da lista */
+    display: grid; /* Usa grid para organizar links em colunas */
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas de largura igual */
+    grid-gap: 15px; /* Espaço entre as colunas e linhas de links */
+}
+
+.footer-links a {
+    color: #737373; /* Mantém os links discretos */
+}
+
+.footer-links a:hover {
+    text-decoration: underline; /* Adiciona sublinhado apenas no hover do rodapé */
+}
+
+@media (max-width: 768px) {
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr); /* Muda para 2 colunas em telas pequenas */
+    }
+}
